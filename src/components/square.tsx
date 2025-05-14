@@ -1,16 +1,18 @@
 import '../app/globals.css';
+import '../../node_modules/tailwindcss/prettier.config.js';
 
 type SquareProps = {
-  value: string | null;
-  onSquareClick: () => void;
+    value: string | null;
+    onSquareClick: () => void;
 };
 
 export default function Square({ value, onSquareClick }: SquareProps) {
-  return (
-    <button className="bg-white border border-[#999] float-left text-2xl font-bold leading-10 h-9 -mr-0.5 -mt-0.5 p-0 text-center w-9"
-      onClick={onSquareClick}>
-      {value}
-    </button>
-  );
+    return (
+        <button
+            className="float-left -mr-0.5 -mt-0.5 h-9 w-9 border border-[#999] bg-white p-0 text-center text-2xl font-bold leading-10"
+            onClick={onSquareClick}
+        >
+            {value}
+        </button>
+    );
 }
-
