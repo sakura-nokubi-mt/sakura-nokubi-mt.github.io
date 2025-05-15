@@ -1,9 +1,10 @@
-import Board from '@/components/board';
+import '../app/globals.css';
+import Game from '@/components/game';
 
 export default function Home() {
     return (
         <>
-            <Board />
+            <Game />
         </>
     );
 }
