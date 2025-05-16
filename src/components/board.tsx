@@ -1,11 +1,14 @@
-'use client';
 import '../app/globals.css';
-import { useState } from 'react';
 import Square from '@/components/square';
 
-export default function Board() {
-    const [xIsNext, setXIsNext] = useState(true);
-    const [squares, setSquares] = useState(Array(9).fill(null));
+type BoardProps = {
+    xIsNext: boolean;
+    squares: string[];
+    onPlay: (nextSquares: string[]) => void;
+};
+
+export default function Board({ xIsNext, squares, onPlay }: BoardProps) {
+    
 
     //クリックされた時の処理
     function handleClick(i: number) {
@@ -13,15 +16,14 @@ export default function Board() {
         if (squares[i] || calculateWinner(squares)) {
             return;
         }
-        //squares配列にXかOを格納し、2つのuseStatusを更新
+        //nextSquares配列のi番目にXかOを格納
         const nextSquares = squares.slice();
         if (xIsNext) {
             nextSquares[i] = 'X';
         } else {
             nextSquares[i] = 'O';
         }
-        setXIsNext(!xIsNext);
-        setSquares(nextSquares);
+        onPlay(nextSquares);
     }
 
     //status(Board上部に表示)を判定
